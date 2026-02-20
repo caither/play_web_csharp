@@ -29,3 +29,31 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Sticky note styles for movies index notes */
+.sticky-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.sticky-note {
+  width: 220px;
+  height: 220px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fff68f 0%, #fff381 100%);
+  border: 1px solid #f0e68c;
+  box-shadow: 4px 6px 10px rgba(0,0,0,0.12);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #222;
+  overflow: auto;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+.sticky-note p {
+  margin: 0;
+}

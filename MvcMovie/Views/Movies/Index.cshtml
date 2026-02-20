@@ -51,3 +51,12 @@
 }
     </tbody>
 </table>
+<br>
+<div class="sticky-container">
+    <div class="sticky-note">
+        <p>在 Details.cshtml 視圖中，程式碼會將每個影片欄位傳遞給 DisplayNameFor 和 DisplayFor HTML 輔助方法，並傳入強類型的 Model 物件。Create 和 Edit 方法及視圖也會傳遞一個 Movie 模型物件。</p>
+    </div>
+    <div class="sticky-note">
+        <p>而在 Index.cshtml 視圖中，因為 Model 物件被強型別化為 IEnumerable Movie 對象，所以 foreach 迴圈中的每個 item 都被類型化為 Movie。</p>
+    </div>
+</div>

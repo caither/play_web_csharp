@@ -44,6 +44,8 @@ artifacts/
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
+MvcMovie/Migrations/
+
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
