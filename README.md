@@ -1,68 +1,74 @@
 # play_web_csharp
 
-以 ASP.NET Core MVC 建立的 C# Web 範例專案，主要包含基本頁面、控制器路由與 Razor View。
+這是一個練習用的 ASP.NET Core MVC 專案（`MvcMovie`），示範 Razor View、Controller 路由，以及使用 Entity Framework Core 對 `Movie` 資料表進行 CRUD。
 
-## 專案概述
+## 專案組成
 
 - Solution：`play_web_csharp.sln`
-- Web 專案：`MvcMovie`
+- Web 專案：`MvcMovie/`
 - 目標框架：`.NET 10`（`net10.0`）
-- 架構：ASP.NET Core MVC（Controllers + Views）
+- 架構：ASP.NET Core MVC（Controllers + Views）+ EF Core（DbContext + Migrations）
 
-## 目前功能
+## 主要功能
 
-- `HomeController`
-- `/` 或 `/Home/Index`：首頁
-- `/Home/Privacy`：隱私權頁面
-- `HelloWorldController`
-- `/HelloWorld/Index`：HelloWorld Razor View 頁面
-- `/HelloWorld/Welcome?name=YourName&ID=1`：回傳文字訊息
+- Movies（CRUD）
+  - `GET /Movies`：列表
+  - `GET /Movies/Details/{id}`：詳細
+  - `GET/POST /Movies/Create`：新增
+  - `GET/POST /Movies/Edit/{id}`：編輯
+  - `GET/POST /Movies/Delete/{id}`：刪除
+- HelloWorld（示範 ViewData）
+  - `GET /HelloWorld`
+  - `GET /HelloWorld/Welcome?name=YourName&numTimes=3`
+- Home
+  - `GET /Home/Index`
+  - `GET /Home/Privacy`
 
-## 執行環境需求
+## 執行方式
 
-- .NET SDK 10（需支援 `net10.0`）
-
-## 快速開始
-
-在專案根目錄執行：
+需要安裝 `.NET SDK 10`。
 
 ```powershell
 dotnet restore
 dotnet run --project .\MvcMovie\MvcMovie.csproj
 ```
 
-預設開發 URL（依 `launchSettings.json`）：
+本機預設網址請參考 `MvcMovie/Properties/launchSettings.json`：
 
 - `http://localhost:5286`
 - `https://localhost:7141`
 
-## 專案結構
+## 資料庫與種子資料（Seed）
+
+- 預設使用 **SQLite**：
+  - 連線字串在 `MvcMovie/appsettings.json` 的 `ConnectionStrings:MvcMovieContext`
+  - 目前設定為：`Data Source=obj/MovieContext-2026a.db`
+- 啟動時會執行種子資料初始化：
+  - `MvcMovie/Program.cs` 會呼叫 `SeedData.Initialize(...)`
+  - `MvcMovie/Models/MovieSeedData.cs` 會在資料表已存在資料時跳過（`context.Movie.Any()`）
+
+## 注意事項 / 常見問題
+
+- DB 檔案目前放在 `obj/` 下：清理/重建（例如 `dotnet clean`）可能導致資料庫檔案被移除；若要長期保存，建議改到固定位置（例如專案根目錄下的 `App_Data/`）。
+- 專案內同時存在 SQLite 與 MySQL 的套件與 Migration 痕跡：若要切換到 MySQL，請確保
+  - `MvcMovie/Program.cs` 的 `UseSqlite(...)` / `UseMySQL(...)` 與
+  - `MvcMovie/Migrations/`、`ModelSnapshot`
+  三者保持一致，避免 `dotnet ef database update` 或執行期行為出錯。
+
+## 目錄結構
 
 ```text
 play_web_csharp/
-├─ play_web_csharp.sln
-├─ README.md
-└─ MvcMovie/
-   ├─ Controllers/
-   │  ├─ HomeController.cs
-   │  └─ HelloWorldController.cs
-   ├─ Models/
-   │  └─ ErrorViewModel.cs
-   ├─ Views/
-   │  ├─ Home/
-   │  ├─ HelloWorld/
-   │  └─ Shared/
-   ├─ wwwroot/
-   ├─ Program.cs
-   ├─ appsettings.json
-   └─ MvcMovie.csproj
+  play_web_csharp.sln
+  README.md
+  MvcMovie/
+    Controllers/
+    Data/
+    Migrations/
+    Models/
+    Views/
+    wwwroot/
+    Program.cs
+    appsettings.json
+    MvcMovie.csproj
 ```
-
-## 設定說明
-
-- `appsettings.json`：記錄日誌等級與 `AllowedHosts`
-- `Program.cs`：註冊 MVC、設定中介軟體與預設路由
-
-## 備註
-
-目前為教學/練習性質的基礎範例，尚未包含資料庫、身分驗證與自動化測試。
