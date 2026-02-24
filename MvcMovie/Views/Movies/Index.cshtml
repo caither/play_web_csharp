@@ -12,12 +12,13 @@
 
 <form asp-controller="Movies" asp-action="Index" method="get">
     <p>
-        <select asp-items="Model.Genres" name="MovieGenre">
-            <option value="">All</option> 
+        @* 善用asp-for 產生 tag name attribute *@
+        <select asp-items="Model.Genres" asp-for="MovieGenre">
+            <option value="">All</option>
             <!-- 設定value=""，使得 選項 All 給GET參數(MovieGenre)帶入空字串 -->
         </select>
 
-        <label>Title: <input type="text" name="SearchString" /> </label>
+        <label>Title: <input type="text" asp-for="SearchString" /> </label>
         <input type="submit" value="Filter" />
     </p>
 </form>
