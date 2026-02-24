@@ -22,15 +22,22 @@ namespace MvcMovie.Controllers
 
         // GET: Movies?searchString=Ghost
         // 如果 Index方法 無[HttpPost]的override版本，POST也會送到這裡處理
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string movieGenre)
         {
             if (_context.Movie == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
 
+            // Get a list of genres
+            var genreQuery = from m in _context.Movie
+                             orderby m.Genre
+                             select m.Genre;
+
+
             // 「定義」查詢，尚未對資料庫執行查詢
-            var movies = from m in _context.Movie select m;
+            var movies = from m in _context.Movie
+                         select m;
 
             // 如果 searchString 參數包含字串，則會修改電影查詢來篩選搜尋字串的值
             if (!String.IsNullOrEmpty(searchString))
@@ -40,7 +47,20 @@ namespace MvcMovie.Controllers
                 );
             }
 
-            return View(await movies.ToListAsync());
+            if (!String.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(
+                    x => x.Genre == movieGenre
+                );
+            }
+
+            var movieGenreVM = new MovieGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Movies = await movies.ToListAsync()
+            };
+
+            return View(movieGenreVM);
         }
 
         // POST: Movies
