@@ -1,12 +1,13 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using MvcMovie.Data;
+using MvcMovie.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MvcMovie.Data;
-using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
 {
@@ -19,11 +20,36 @@ namespace MvcMovie.Controllers
             _context = context;
         }
 
-        // GET: Movies
-        public async Task<IActionResult> Index()
+        // GET: Movies?searchString=Ghost
+        // 如果 Index方法 無[HttpPost]的override版本，POST也會送到這裡處理
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Movie.ToListAsync());
+            if (_context.Movie == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+            }
+
+            // 「定義」查詢，尚未對資料庫執行查詢
+            var movies = from m in _context.Movie select m;
+
+            // 如果 searchString 參數包含字串，則會修改電影查詢來篩選搜尋字串的值
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(
+                    s => s.Title!.ToUpper().Contains(searchString.ToUpper())
+                );
+            }
+
+            return View(await movies.ToListAsync());
         }
+
+        // POST: Movies
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + searchString;
+        }
+
 
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
