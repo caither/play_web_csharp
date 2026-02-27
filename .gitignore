@@ -68,3 +68,12 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
+
+# Legacy WebForm artifacts
+Legacy/**/packages/
+Legacy/**/[Bb]in/
+Legacy/**/[Oo]bj/
+Legacy/**/App_Data/
+# Legacy NuGet bootstrap
+.nuget/
+
