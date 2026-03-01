@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1a_DataReader.aspx.cs" Inherits="P3_DbADO_mysql.OD_1a_DataReader" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_3_DataSet.aspx.cs" Inherits="P3_DbADO_mysql.OD_3_DataSet" %>
 
 <!DOCTYPE html>
 
@@ -11,30 +11,20 @@
         <div id="db_status">
             <p>DataSource:<asp:Label ID="DataSource1" runat="server" Text="Label"></asp:Label></p>
             <p>Database:<asp:Label ID="DbName1" runat="server" Text="Label"></asp:Label></p>
-
             <p>DbState:<asp:Label ID="DbState1" runat="server" Text="Label"></asp:Label></p>
         </div>
-        <br />
-
-        <div id="db_update">
-            <h3>Update productID=38</h3>
-            <asp:Label ID="Label1" runat="server" Text="Set Price:"></asp:Label>
-            <asp:TextBox ID="SetString1" runat="server" Text="264"></asp:TextBox>
-            <asp:Button ID="SetButton1" runat="server" Text="Update" OnClick="SetButton1_Click" />
-        </div>
-        <br />
 
         <div id="db_query">
-            <h3>Query northwind products； 使用 DataReader + new LiteralControl html</h3>
+            <h2>Query norhtwind，使用 DataSet 中繼 </h2>
+            <h4>`using System.Data;`</h4>
 
             <asp:Label ID="LabelQ" runat="server" Text="Qurey by Product id"></asp:Label>
             <asp:TextBox ID="QueryString1" runat="server" placeholder="Product id"></asp:TextBox>
 
             <asp:Button ID="QueryButton1" runat="server" Text="Query" OnClick="QueryButton1_Click" />
             <br />
-            <asp:Panel ID="ResultPanel" runat="server"></asp:Panel>
+            <asp:Panel ID="ResultPanel1" runat="server"></asp:Panel>
         </div>
-
     </form>
 </body>
 </html>

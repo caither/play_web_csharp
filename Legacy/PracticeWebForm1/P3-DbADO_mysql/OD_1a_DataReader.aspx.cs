@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 namespace P3_DbADO_mysql
 {
     public partial class OD_1a_DataReader : System.Web.UI.Page
@@ -29,7 +30,7 @@ namespace P3_DbADO_mysql
             DataSource1.Text = conn.DataSource;
             DbName1.Text = conn.Database;
 
-            conn.Close(); 
+            conn.Close();
             DbState1.Text = conn.State.ToString();
 
         }

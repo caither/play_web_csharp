@@ -84,6 +84,8 @@
     <Content Include="Global.asax" />
     <Content Include="OD_1b_ConnString.aspx" />
     <Content Include="OD_2_DataTable.aspx" />
+    <Content Include="OD_3_DataSet.aspx" />
+    <Content Include="OD_4_GridView.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +119,20 @@
     </Compile>
     <Compile Include="OD_2_DataTable.aspx.designer.cs">
       <DependentUpon>OD_2_DataTable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OD_3_DataSet.aspx.cs">
+      <DependentUpon>OD_3_DataSet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OD_3_DataSet.aspx.designer.cs">
+      <DependentUpon>OD_3_DataSet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OD_4_GridView.aspx.cs">
+      <DependentUpon>OD_4_GridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OD_4_GridView.aspx.designer.cs">
+      <DependentUpon>OD_4_GridView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
