@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +11,8 @@ using System.Web.UI.WebControls;
 
 namespace P3_DbADO_mysql
 {
-    public partial class OD_1b_ConnString : System.Web.UI.Page
+    public partial class OD_2_DataTable : System.Web.UI.Page
+
     {
         private MySqlConnection conn { get; set; }
 
@@ -62,25 +64,55 @@ namespace P3_DbADO_mysql
                 using (var reader = command.ExecuteReader())
                 {
                     int fieldCount = reader.FieldCount;
+
+                    // 名稱列
+                    TableHeaderRow header = MakeHeader(reader, fieldCount);
+                    Table1.Rows.Add(header);
+
+                    // 資料列
                     while (reader.Read())
                     {
+                        var _row = new TableRow();
+                        // 標題列
+                        //var header_row = MakeHeaderRow();
+                        // 資料列
                         for (int i = 0; i < fieldCount; i++)
                         {
-                            string _name = reader.GetName(i);
-                            string _valu = reader.GetValue(i).ToString();
-
-                            var _label = new Label
-                            {
-                                Text = $"<p> ({i})| {_name}：{_valu} </p>"
-                            };
-                            ResultPanel1.Controls.Add(_label);
+                            // 裝載TableCell至Row
+                            var _cell = new TableCell();
+                            _cell.Text = reader.GetValue(i).ToString();
+                            _row.Cells.Add(_cell);
                         }// for i < fieldCount
-                        ResultPanel1.Controls.Add(new LiteralControl("<hr />"));
+
+                        Table1.Rows.Add(_row);
                     }// while Read()
+
                 }// using reader
 
                 conn.Close();
             }// using command
+        } // QueryButton1_Click()
+
+
+        /// <summary>
+        /// 使用欄名稱建立 TableHeaderRow
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="fieldCount"></param>
+        /// <returns>header</returns>
+        private static TableHeaderRow MakeHeader(MySqlDataReader reader, int fieldCount)
+        {
+            var header = new TableHeaderRow();
+            header.BackColor = Color.LightBlue; // using System.Drawing
+            for (int i = 0; i < fieldCount; i++)
+            {
+                var _hcell = new TableHeaderCell();
+                // 以 Column Name作為 Header row
+                _hcell.Text = reader.GetName(i);
+                header.Cells.Add(_hcell);
+            }
+            return header;
         }
-    }
-}
+
+    }// class OD_2_DataTable
+}//ns

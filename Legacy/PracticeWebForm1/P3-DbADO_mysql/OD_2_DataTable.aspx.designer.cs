@@ -10,7 +10,7 @@
 namespace P3_DbADO_mysql {
     
     
-    public partial class OD_1b_ConnString {
+    public partial class OD_2_DataTable {
         
         /// <summary>
         /// form1 control.
@@ -76,12 +76,12 @@ namespace P3_DbADO_mysql {
         protected global::System.Web.UI.WebControls.Button QueryButton1;
         
         /// <summary>
-        /// ResultPanel1 control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ResultPanel1;
+        protected global::System.Web.UI.WebControls.Table Table1;
     }
 }

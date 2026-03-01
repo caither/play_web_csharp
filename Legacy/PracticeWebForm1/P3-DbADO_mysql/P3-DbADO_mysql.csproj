@@ -83,6 +83,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="OD_1b_ConnString.aspx" />
+    <Content Include="OD_2_DataTable.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="OD_1b_ConnString.aspx.designer.cs">
       <DependentUpon>OD_1b_ConnString.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OD_2_DataTable.aspx.cs">
+      <DependentUpon>OD_2_DataTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OD_2_DataTable.aspx.designer.cs">
+      <DependentUpon>OD_2_DataTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

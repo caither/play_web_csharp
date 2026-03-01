@@ -10,7 +10,7 @@
 namespace P3_DbADO_mysql {
     
     
-    public partial class ado_1a_DataReader {
+    public partial class OD_1a_DataReader {
         
         /// <summary>
         /// form1 control.

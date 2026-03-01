@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 namespace P3_DbADO_mysql
 {
-    public partial class ado_1a_DataReader : System.Web.UI.Page
+    public partial class OD_1a_DataReader : System.Web.UI.Page
     {
         private MySqlConnection conn { get; set; }
         protected void Page_Load(object sender, EventArgs e)

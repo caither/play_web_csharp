@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1a_DataReader.aspx.cs" Inherits="P3_DbADO_mysql.ado_1a_DataReader" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1a_DataReader.aspx.cs" Inherits="OD_1a_DataReader" %>
 
 <!DOCTYPE html>
 

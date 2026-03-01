@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1b_ConnString.aspx.cs" Inherits="P3_DbADO_mysql.OD_1b_ConnString" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_2_DataTable.aspx.cs" Inherits="P3_DbADO_mysql.OD_2_DataTable" %>
 
 <!DOCTYPE html>
 
@@ -15,14 +15,14 @@
         </div>
 
         <div id="db_query">
-            <h2>Query norhtwind by Web.config connection string</h2>
+            <h2>Query norhtwind，使用 DataReader + Table Control</h2>
 
             <asp:Label ID="LabelQ" runat="server" Text="Qurey by Product id"></asp:Label>
             <asp:TextBox ID="QueryString1" runat="server" placeholder="Product id"></asp:TextBox>
 
             <asp:Button ID="QueryButton1" runat="server" Text="Query" OnClick="QueryButton1_Click" />
             <br />
-            <asp:Panel ID="ResultPanel1" runat="server"></asp:Panel>
+            <asp:Table ID="Table1" runat="server"></asp:Table>
         </div>
     </form>
 </body>
