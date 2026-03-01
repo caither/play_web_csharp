@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1_DataReader.aspx.cs" Inherits="P3_DbADO_mysql.ado_1a_DataReader" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OD_1a_DataReader.aspx.cs" Inherits="P3_DbADO_mysql.ado_1a_DataReader" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div id="db_status">
             <p>DataSource:<asp:Label ID="DataSource1" runat="server" Text="Label"></asp:Label></p>
-            <p>DataBase:<asp:Label ID="DbName1" runat="server" Text="Label"></asp:Label></p>
+            <p>Database:<asp:Label ID="DbName1" runat="server" Text="Label"></asp:Label></p>
 
             <p>DbState:<asp:Label ID="DbState1" runat="server" Text="Label"></asp:Label></p>
         </div>
@@ -27,7 +27,7 @@
         <div id="db_query">
             <h3>Query northwind products； 使用 DataReader + new LiteralControl html</h3>
 
-            <asp:Label ID="LabelQ" runat="server" Text="Find by Product id"></asp:Label>
+            <asp:Label ID="LabelQ" runat="server" Text="Qurey by Product id"></asp:Label>
             <asp:TextBox ID="QueryString1" runat="server" placeholder="Product id"></asp:TextBox>
 
             <asp:Button ID="QueryButton1" runat="server" Text="Query" OnClick="QueryButton1_Click" />

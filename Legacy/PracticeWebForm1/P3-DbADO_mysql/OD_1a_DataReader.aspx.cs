@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace P3_DbADO_mysql
 {
     public partial class ado_1a_DataReader : System.Web.UI.Page
     {
-        private MySqlConnection Conn { get; set; }
+        private MySqlConnection conn { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             // set these values correctly for your database server
@@ -22,15 +22,15 @@ namespace P3_DbADO_mysql
                 SslMode = MySqlSslMode.None
             };
 
-            // open a connection asynchronously
-            Conn = new MySqlConnection(builder.ConnectionString);
+            // open a connection
+            conn = new MySqlConnection(builder.ConnectionString);
 
-            Conn.Open();
-            DataSource1.Text = Conn.DataSource;
-            DbName1.Text = Conn.Database;
+            conn.Open();
+            DataSource1.Text = conn.DataSource;
+            DbName1.Text = conn.Database;
 
-            Conn.Close(); 
-            DbState1.Text = Conn.State.ToString();
+            conn.Close(); 
+            DbState1.Text = conn.State.ToString();
 
         }
 
@@ -47,16 +47,16 @@ namespace P3_DbADO_mysql
             }
 
             // create a DB command and set the SQL statement with parameters
-            var command = Conn.CreateCommand();
+            var command = conn.CreateCommand();
             command.CommandText = @" UPDATE products "
                 + " SET Price = ? "
                 + " WHERE ProductID = 38 ; "
                 ;
             command.Parameters.AddWithValue("@price", price);
 
-            Conn.Open();
+            conn.Open();
             int rowCount = command.ExecuteNonQuery();
-            Conn.Close();
+            conn.Close();
 
             DbState1.Text = "影響資料筆數：" + rowCount.ToString();
         }
@@ -74,7 +74,7 @@ namespace P3_DbADO_mysql
             }
 
             // create a DB command and set the SQL statement with parameters
-            var command = Conn.CreateCommand();
+            var command = conn.CreateCommand();
 
             string whereClause = " WHERE Price > 5 ";
             if (queryID != 0)
@@ -89,11 +89,11 @@ namespace P3_DbADO_mysql
 
             try
             {
-                if (Conn.State == System.Data.ConnectionState.Open)
+                if (conn.State == System.Data.ConnectionState.Open)
                 {
                     // Connection 已經被開啟就不能再Open()，否則會出Execption
                 }
-                else { Conn.Open(); }
+                else { conn.Open(); }
 
                 var reader = command.ExecuteReader();
 
@@ -114,7 +114,7 @@ namespace P3_DbADO_mysql
                     ResultPanel.Controls.Add(new LiteralControl("<hr />"));
                 }// while
 
-                Conn.Close();
+                conn.Close();
 
             }
             catch (Exception)
