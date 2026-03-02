@@ -12,6 +12,7 @@
 
         <h1>基本資料控制項，使用SqlDataSource</h1>
         <p>&lt;%# is a data binding syntax for use in databound controls.</p>
+        <p><a href="https://learn.microsoft.com/en-us/aspnet/web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs#step-2-displaying-product-information-with-the-datalist">Displaying Information with the DataList </a></p>
         <br />
 
         <h3>參考用GridView</h3>
@@ -21,6 +22,12 @@
 
         <h2>DataList控制項，搭配Label控制項</h2>
         <ul>
+
+            <li>
+                <p>
+                    <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.datalist.itemtemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">ItemTemplate</a>使用屬性來控制控制控制項中<a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.datalist?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">DataList</a>項目的內容。 控件中 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.datalist?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">DataList</a> 項目的外觀是由 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.datalist.itemstyle?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">ItemStyle</a> 屬性所控制。
+                </p>
+            </li>
             <li>跟Repeater類似，相當於可用Auto Format 之 Repeater Control，而且標籤項目豐富很多</li>
             <li>設計編輯功能中的Auto Format產生樣式，能減少hard coding</li>
         </ul>

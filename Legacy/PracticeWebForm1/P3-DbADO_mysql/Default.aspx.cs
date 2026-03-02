@@ -27,11 +27,13 @@ namespace Webf3
             //用AppDomain.CurrentDomain.BaseDirectory取得跟路徑
             DirectoryInfo root_dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
 
-            FileInfo[] aspx_files = root_dir.GetFiles("*.aspx", SearchOption.TopDirectoryOnly);
+            FileInfo[] files = root_dir.GetFiles("*.aspx", SearchOption.TopDirectoryOnly).Concat(root_dir.GetFiles("*.html", SearchOption.TopDirectoryOnly)).ToArray();
 
-            Debug.WriteLine(aspx_files.Length);
 
-            foreach (FileInfo aspx in aspx_files)
+
+            Debug.WriteLine(files.Length);
+
+            foreach (FileInfo aspx in files)
             {
                 //動態新增list tag
                 PlaceHolder1.Controls.Add(new LiteralControl("<li>"));

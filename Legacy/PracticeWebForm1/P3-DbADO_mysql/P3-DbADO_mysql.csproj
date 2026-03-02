@@ -89,6 +89,10 @@
     <Content Include="U7_1_SqlData_ListCtrl.aspx" />
     <Content Include="U7_2a_SqlData_Repeater.aspx" />
     <Content Include="U7_2b_SqlData_DataList.aspx" />
+    <Content Include="U7_3a_ListView_DataPager.aspx" />
+    <Content Include="U7_3e_ListView_editor.html" />
+    <Content Include="U7_4a_FormView.aspx" />
+    <Content Include="U7_4e_FormView_editor.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +162,20 @@
     </Compile>
     <Compile Include="U7_2b_SqlData_DataList.aspx.designer.cs">
       <DependentUpon>U7_2b_SqlData_DataList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="U7_3a_ListView_DataPager.aspx.cs">
+      <DependentUpon>U7_3a_ListView_DataPager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="U7_3a_ListView_DataPager.aspx.designer.cs">
+      <DependentUpon>U7_3a_ListView_DataPager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="U7_4a_FormView.aspx.cs">
+      <DependentUpon>U7_4a_FormView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="U7_4a_FormView.aspx.designer.cs">
+      <DependentUpon>U7_4a_FormView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

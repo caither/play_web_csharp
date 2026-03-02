@@ -48,6 +48,11 @@
         <span class="context">&lt;%@ is a directive to include a namespace, page directives, etc.</span>
         <br />
 
+        <p>
+            控制項 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">Repeater</a> 會將其 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.itemtemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">ItemTemplate</a> 和 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.alternatingitemtemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">AlternatingItemTemplate</a> 系結至其 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.datasource?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">DataSource</a> 屬性所宣告和參考的資料模型，或其 屬性所 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.datasourceid?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">DataSourceID</a> 指定的資料來源控制項。 
+              <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.headertemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">HeaderTemplate</a>、 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.footertemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">FooterTemplate</a>則不是 data-bound。
+        </p>
+
         <h3>參考用GridView</h3>
         <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource1" AutoGenerateColumns="False">
             <Columns>
@@ -63,6 +68,7 @@
 
         <h2>Repeater控制項，搭配html table</h2>
         <ul>
+            <li><a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.webcontrols.repeater?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">使用 Repeater 控制項</a></li>
             <li>等同在aspx端做foreach效果</li>
             <li>顯示區域需要handmade。 標籤項目有 HeaderTemplate + ItemTemplate + FooterTemplate +...</li>
             <li>只有ItemTemplate 是必要項</li>
@@ -112,6 +118,7 @@
 
         <h2>Repeater控制項，plain text + SeparatorTemplate</h2>
         <ul>
+            <li>每個 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">Repeater</a> 控制項至少都必須定義 <a href="https://learn.microsoft.com/zh-tw/dotnet/api/system.web.ui.webcontrols.repeater.itemtemplate?view=netframework-4.6.1" class="no-loc" data-linktype="relative-path">ItemTemplate</a> 。 </li>
             <li>顯示區域標籤項目 ItemTemplate + SeparatorTemplate</li>
         </ul>
 

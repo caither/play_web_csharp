@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--暫時不研究編輯功能-->
+    <%--Insert、Update、DeleteCommand 對SQL Server可以自動產生--%>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=F15\SQLEXPRESS;Initial Catalog=AdventureWorks2016;Integrated Security=True" DeleteCommand="DELETE FROM Person.Person WHERE [BusinessEntityID] = @BusinessEntityID" InsertCommand="INSERT INTO Person.Person ([BusinessEntityID], [LastName], [StartDate], [Title]) VALUES (@BusinessEntityID, @LastName, @StartDate, @Title)" ProviderName="System.Data.SqlClient" SelectCommand="SELECT TOP (50) [BusinessEntityID], [LastName], [StartDate], [Title] FROM Person.Person" UpdateCommand="UPDATE Person.Person SET [LastName] = @LastName, [StartDate] = @StartDate, [Title] = @Title WHERE [BusinessEntityID] = @BusinessEntityID">
+        <DeleteParameters>
+            <asp:Parameter Name="BusinessEntityID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="BusinessEntityID" Type="Int32" />
+            <asp:Parameter Name="LastName" Type="String" />
+            <asp:Parameter DbType="DateTime2" Name="StartDate" />
+            <asp:Parameter Name="Title" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="LastName" Type="String" />
+            <asp:Parameter DbType="DateTime2" Name="StartDate" />
+            <asp:Parameter Name="Title" Type="String" />
+            <asp:Parameter Name="BusinessEntityID" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+
+    <h2>FormView控制項，編輯功能</h2>
+    <ul>
+        <li>這裡用搭配Sql Server的自動設定 編輯、刪除、新增 語法及樣板</li>
+        <li>啟用分頁</li>
+    </ul>
+    <p>未啟用動態資料 資料項類似 &lt;asp:Label ID="TitleLabel" runat="server" Text='&lt;%# Bind("Title") %&gt;' /&gt;</p>
+    <p>啟用動態資料 資料項變成類似 &lt;asp:DynamicControl ID="TitleDynamicControl" runat="server" DataField="Title" Mode="ReadOnly" /&gt;</p>
+    <p>但啟用會發生錯誤：<span><i>無法判斷 MetaTable。無法判斷資料來源 &#39;SqlDataSource1&#39; 的 MetaTable，也無法從要求 URL 推斷。請確認資料表已對應到資料來源，或資料來源是以有效的內容型別和資料表名稱設定，或者要求是註冊的 DynamicDataRoute 的一部分。</i> </span></p>
+    <!--暫時不想研究動態資料-->
+    <br />
+    <div id="FormView2Edit">
+        <asp:FormView ID="FormView2" runat="server" DataKeyNames="BusinessEntityID" DataSourceID="SqlDataSource2" AllowPaging="True">
+            <EditItemTemplate>
+                BusinessEntityID:
+                <asp:Label ID="BusinessEntityIDLabel1" runat="server" Text='<%# Eval("BusinessEntityID") %>' />
+                <br />
+                LastName:
+                <asp:TextBox ID="LastNameTextBox" runat="server" Text='<%# Bind("LastName") %>' />
+                <br />
+                StartDate:
+                <asp:TextBox ID="StartDateTextBox" runat="server" Text='<%# Bind("StartDate") %>' />
+                <br />
+                Title:
+                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
+                <br />
+                <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="更新" />
+                &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消" />
+            </EditItemTemplate>
+            <InsertItemTemplate>
+                BusinessEntityID:
+                <asp:TextBox ID="BusinessEntityIDTextBox" runat="server" Text='<%# Bind("BusinessEntityID") %>' />
+                <br />
+                LastName:
+                <asp:TextBox ID="LastNameTextBox" runat="server" Text='<%# Bind("LastName") %>' />
+                <br />
+                StartDate:
+                <asp:TextBox ID="StartDateTextBox" runat="server" Text='<%# Bind("StartDate") %>' />
+                <br />
+                Title:
+                <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
+                <br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="插入" />
+                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消" />
+            </InsertItemTemplate>
+            <ItemTemplate>
+                BusinessEntityID:
+                <asp:Label ID="BusinessEntityIDLabel" runat="server" Text='<%# Eval("BusinessEntityID") %>' />
+                <br />
+                LastName:
+                <asp:Label ID="LastNameLabel" runat="server" Text='<%# Bind("LastName") %>' />
+                <br />
+                StartDate:
+                <asp:Label ID="StartDateLabel" runat="server" Text='<%# Bind("StartDate") %>' />
+                <br />
+                Title:
+                <asp:Label ID="TitleLabel" runat="server" Text='<%# Bind("Title") %>' />
+                <br />
+                <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="編輯" />
+                &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="刪除" />
+                &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="新增" />
+            </ItemTemplate>
+        </asp:FormView>
+    </div>
+    <br />
+</body>
+</html>
