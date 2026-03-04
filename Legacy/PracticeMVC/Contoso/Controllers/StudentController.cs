@@ -16,7 +16,7 @@ namespace Contoso.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchStr)
         {
             // 透過ViewBag傳遞排序參數給View，以便在View中建立排序連結
             ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -25,6 +25,14 @@ namespace Contoso.Controllers
             // 從資料庫讀取學生資料
             var students = from s in db.Students
                            select s;
+
+            // 根據搜尋字串過濾學生資料
+            if (!String.IsNullOrEmpty(searchStr))
+            {
+                // 使用Contains方法，搜尋學生的 姓氏 或 名字
+                students = students.Where(s => s.LastName.Contains(searchStr)
+                || s.FirstMidName.Contains(searchStr));
+            }
 
             // 根據排序參數對學生進行排序
             switch (sortOrder)

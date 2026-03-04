@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        按名稱搜尋： @Html.TextBox("SearchStr")
+        <input type="submit" value="搜尋" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
