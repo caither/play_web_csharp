@@ -29,7 +29,10 @@
         <th>
             @Html.ActionLink(linkText: "Enrollment Date", actionName: "Index", routeValues: new { sortOrder = ViewBag.DateSortParm })
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th> <!--ActionLinks--> </th>
     </tr>
 
     @foreach (var item in Model)
@@ -43,6 +46,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
