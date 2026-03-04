@@ -18,6 +18,11 @@ namespace Contoso.Controllers
 
         public ActionResult About()
         {
+            /*
+SELECT EnrollmentDate AS EnrollmentDate, COUNT(*) AS StudentCount
+FROM student
+GROUP BY EnrollmentDate;
+            */
             // LINQ to Entities 查詢，將學生依照註冊日期分組，並計算每個註冊日期的學生人數。
             var data = from student in db.Students
                        group student by student.EnrollmentDate into dataGroup
